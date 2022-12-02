@@ -74,31 +74,30 @@
 
     <!-- Ask for  amount -->
     <form action="/buy" method="POST">
-    <input name="amount" placeholder="Amount Spent" type="number">
+      <input name="amount" placeholder="Amount Spent" type="number">
 
-    <!-- Ask for  description -->
-    <form action="/buy" method="POST">
-    <input name="description" placeholder="Description" type="text">
+      <!-- Ask for  description -->
+      <input name="description" placeholder="Description" type="text">
 
-    <!-- Creating a button named quote -->
-    <button class="btn btn-primary" type="submit">Submit</button>
+      <!-- Creating a button named quote -->
+      <button class="btn btn-primary" type="submit">Submit</button>
+
+      <!--surround the select box with a "custom-select" DIV element. Remember to set the width:-->
+        <div class="custom-select" style="width:200px;">
+          <select>
+            <option value="0">Select Category:</option>
+            <option value="1">Food</option>
+            <option value="2">Housing</option>
+            <option value="3">Insurance</option>
+            <option value="4">Utilities (cell phone, gas, electricity, water, internet)</option>
+            <option value="5">Recreation (travel, entertainment, hobbies)</option>
+            <option value="6">Personal (closing, haircuts)</option>
+            <option value="7">Transportation (public transportation, car, gas).</option>
+            <option value="8">Savings</option>
+          </select>
+      </div>
     </form>
 
-
-    <!--surround the select box with a "custom-select" DIV element. Remember to set the width:-->
-    <div class="custom-select" style="width:200px;">
-      <select>
-        <option value="0">Select Category:</option>
-        <option value="1">Food</option>
-        <option value="2">Housing</option>
-        <option value="3">Insurance</option>
-        <option value="4">Utilities (cell phone, gas, electricity, water, internet)</option>
-        <option value="5">Recreation (travel, entertainment, hobbies)</option>
-        <option value="6">Personal (closing, haircuts)</option>
-        <option value="7">Transportation (public transportation, car, gas).</option>
-        <option value="8">Savings</option>
-      </select>
-    </div>
 
     <script>
     var x, i, j, l, ll, selElmnt, a, b, c;
