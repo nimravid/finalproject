@@ -269,7 +269,7 @@ def register():
         return render_template("register.html")
 
 
-@app.route("/main", methods=["GET", "POST"])
+@app.route("/home", methods=["GET", "POST"])
 @login_required
 def main():
     """Sell shares of stock"""
@@ -323,5 +323,5 @@ def main():
         # Specify what the options for stocks are
         stocks = db.execute("SELECT symbol FROM transactions WHERE user_id = ?", session["user_id"])
 
-        return render_template("main.html", stocks=stocks)
+        return render_template("home.html", stocks=stocks)
 
