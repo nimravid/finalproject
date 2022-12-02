@@ -1,12 +1,4 @@
-{% extends "layout.html" %}
-
-{% block title %}
-    main
-{% endblock %}
-
-
-<html>
-    <!DOCTYPE html>
+<!DOCTYPE html>
     <html>
     <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -187,27 +179,4 @@
     </script>
 </body>
 
-{% block main %}
-    <table class="table">
-        <tr>
-            <th>Amount</th>
-            <th>Category</th>
-            <th>Description</th>
-            <th>Time</th>
-        </tr>
-        <tbody>
-            {% for stock in symbols %}
-            <tr>
-                <td>{{ stock["symbol"] }}</td>
-                <td>{{ stock["stocks"] }}</td>
-                <td>{{ stock["price"] }}</td>
-                <td>{{ stock["date"] }}</td>
-                <td>{{ stock["current_timestamp"] }}</td>
-                <td>{{ purchase }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-
-{% endblock %}
-
+</html>
