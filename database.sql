@@ -3,6 +3,7 @@
 CREATE TABLE history (
     amount int,
     descripition varchar,
-    column3 datatype,
+    category varchar
+    time timestamp
    ....
 );
