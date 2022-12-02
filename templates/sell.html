@@ -1,4 +1,10 @@
-<!DOCTYPE html>
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell
+{% endblock %}
+
+
 <html>
     <!DOCTYPE html>
     <html>
@@ -180,4 +186,28 @@
     document.addEventListener("click", closeAllSelect);
     </script>
 </body>
-</html>
+
+{% block main %}
+    <table class="table">
+        <tr>
+            <th>Amount</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Time</th>
+        </tr>
+        <tbody>
+            {% for stock in symbols %}
+            <tr>
+                <td>{{ stock["symbol"] }}</td>
+                <td>{{ stock["stocks"] }}</td>
+                <td>{{ stock["price"] }}</td>
+                <td>{{ stock["date"] }}</td>
+                <td>{{ stock["current_timestamp"] }}</td>
+                <td>{{ purchase }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
+
