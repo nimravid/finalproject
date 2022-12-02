@@ -130,7 +130,7 @@ def buy():
 def history():
     """Show history of transactions"""
     # Access each stock in the transactions database, where the most recent stock bought is at the top
-    symbols = db.execute("SELECT * FROM transactions WHERE user_id = ? ORDER BY symbol ASC", session["user_id"])
+    symbols = db.execute("SELECT * FROM history WHERE user_id = ? ORDER BY symbol ASC", session["user_id"])
 
     # For easy access to users later on when specifying cash
     user = db.execute("SELECT * FROM users WHERE id = ?", session["user_id"])
