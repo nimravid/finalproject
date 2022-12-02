@@ -125,7 +125,7 @@ def buy():
         return render_template("buy.html")
 
 
-@app.route("/history")
+@app.route("/")
 @login_required
 def history():
     """Show history of transactions"""
