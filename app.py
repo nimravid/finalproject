@@ -269,9 +269,9 @@ def register():
         return render_template("register.html")
 
 
-@app.route("/sell", methods=["GET", "POST"])
+@app.route("/main", methods=["GET", "POST"])
 @login_required
-def sell():
+def main():
     """Sell shares of stock"""
     if request.method == "POST":
         # Return apology if stock symbol input is blank
@@ -323,5 +323,5 @@ def sell():
         # Specify what the options for stocks are
         stocks = db.execute("SELECT symbol FROM transactions WHERE user_id = ?", session["user_id"])
 
-        return render_template("sell.html", stocks=stocks)
+        return render_template("main.html", stocks=stocks)
 
