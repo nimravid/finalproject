@@ -133,7 +133,7 @@ def history():
     symbols = db.execute("SELECT * FROM history WHERE user_id = ? ORDER BY symbol ASC", session["user_id"])
 
     # For easy access to users later on when specifying cash
-    user = db.execute("SELECT * FROM users WHERE id = ?", session["user_id"])
+    user = db.execute("SELECT * FROM history WHERE id = ?", session["user_id"])
 
     # Specify whether an input is purchased or not and change in index depending on whether or not it was sold or bought
     purchase = "PURCHASED"
