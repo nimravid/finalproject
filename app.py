@@ -269,7 +269,7 @@ def register():
         return render_template("register.html")
 
 
-@app.route("/home", methods=["GET", "POST"])
+@app.route("/sell", methods=["GET", "POST"])
 @login_required
 def main():
     """Sell shares of stock"""
