@@ -312,7 +312,11 @@ def main():
 
         # Update finance.db (insert into syntax)
         db.execute("INSERT INTO history2 (amount, description, category, time, user_id) VALUES (?, ?, ?, ?, ?)",
-                   session["user_id"], request.form.get("amount"), request.form.get("amount")
+                   session["user_id"],
+                   request.form.get(“amount”),
+                   request.form.get(“description”),
+                   request.form.get(“category”),
+                   session[“user_id”]).
 
         # Update cash
         db.execute("UPDATE users SET cash = ? WHERE id = ?", cash + cost, session["user_id"])
