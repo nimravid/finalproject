@@ -274,41 +274,6 @@ def register():
 def main():
     """Sell shares of stock"""
     if request.method == "POST":
-        # Return apology if stock symbol input is blank
-        if not request.form.get("symbol"):
-            return apology("stock symbol does not exist", 400)
-
-        # Look up the symbol
-        symbol = request.form.get("symbol")
-        quote = lookup(symbol)
-
-        # Check to see if user owns shares of stock and by creating temporary column for total # of stocks
-        stocks = db.execute("SELECT SUM(stocks) AS total_shares FROM transactions WHERE user_id = ? AND symbol = ?",
-                            session["user_id"], quote["symbol"])
-        if stocks[0]["total_shares"] <= 0:
-            return apology("you do not own any shares of that stock", 400)
-
-        # Look up number of shares user wants to buy
-        try:
-            shares = int(request.form.get("shares"))
-        except:
-            return apology("number of shares is invalid", 400)
-
-        # Check if number of shares user wants to sell is greater than total stocks owned
-        if shares > stocks[0]["total_shares"]:
-            return apology("you do not own that many shares of that stock", 400)
-
-       # Look up stock's current price
-        current_price = quote["price"]
-
-        # Name of stock
-        name = quote["name"]
-
-        # Calculate cost
-        cost = current_price * shares
-
-        # Check how much cash the user has
-        cash = db.execute("SELECT cash FROM users WHERE id = ?", session["user_id"])[0]["cash"]
 
         # Update finance.db (insert into syntax)
         db.execute("INSERT INTO history2 (amount, description, category, user_id) VALUES (?, ?, ?, ?)",
@@ -317,14 +282,8 @@ def main():
                    request.form.get("category"),
                    session["user_id"])
 
-        # Update cash
-        db.execute("UPDATE users SET cash = ? WHERE id = ?", cash + cost, session["user_id"])
-
         return redirect("/")
 
     else:
-        # Specify what the options for stocks are
-        stocks = db.execute("SELECT symbol FROM transactions WHERE user_id = ?", session["user_id"])
-
-        return render_template("sell.html", stocks=stocks)
+        return render_template("sell.html")
 
