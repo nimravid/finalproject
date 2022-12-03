@@ -323,5 +323,5 @@ def main():
         # Specify what the options for stocks are
         stocks = db.execute("SELECT symbol FROM transactions WHERE user_id = ?", session["user_id"])
 
-        return render_template("home.html", stocks=stocks)
+        return render_template("sell.html", stocks=stocks)
 
