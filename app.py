@@ -311,7 +311,7 @@ def main():
         cash = db.execute("SELECT cash FROM users WHERE id = ?", session["user_id"])[0]["cash"]
 
         # Update finance.db (insert into syntax)
-        db.execute("INSERT INTO transactions (user_id, symbol, stocks, price, name) VALUES (?, ?, ?, ?, ?)",
+        db.execute("INSERT INTO history (amount, description, category, time) VALUES (?, ?, ?, ?)",
                    session["user_id"], quote["symbol"], -(shares), current_price, name)
 
         # Update cash
