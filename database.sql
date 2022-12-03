@@ -5,4 +5,5 @@ CREATE TABLE history (
     descripition varchar,
     category varchar,
     time timestamp,
+    user_id
 );
