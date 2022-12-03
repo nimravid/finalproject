@@ -316,7 +316,7 @@ def main():
                    request.form.get(“amount”),
                    request.form.get(“description”),
                    request.form.get(“category”),
-                   session[“user_id”]).
+                   session[“user_id”])
 
         # Update cash
         db.execute("UPDATE users SET cash = ? WHERE id = ?", cash + cost, session["user_id"])
