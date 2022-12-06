@@ -1,110 +1,11 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    sell
+    Index
 {% endblock %}
 
 {% block main %}
-
-<html>
-    <style>
-    /*the container must be positioned relative:*/
-    .custom-select {
-      position: relative;
-      font-family: Arial;
-    }
-
-    .custom-select select {
-      display: none; /*hide original SELECT element:*/
-    }
-
-    .select-selected {
-      background-color: DodgerBlue;
-    }
-
-    /*style the arrow inside the select element:*/
-    .select-selected:after {
-      position: absolute;
-      content: "";
-      top: 14px;
-      right: 10px;
-      width: 0;
-      height: 0;
-      border: 6px solid transparent;
-      border-color: #fff transparent transparent transparent;
-    }
-
-    /*point the arrow upwards when the select box is open (active):*/
-    .select-selected.select-arrow-active:after {
-      border-color: transparent transparent #fff transparent;
-      top: 7px;
-    }
-
-    /*style the items (options), including the selected item:*/
-    .select-items div,.select-selected {
-      color: #ffffff;
-      padding: 8px 16px;
-      border: 1px solid transparent;
-      border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    /*style items (options):*/
-    .select-items {
-      position: absolute;
-      background-color: DodgerBlue;
-      top: 100%;
-      left: 0;
-      right: 0;
-      z-index: 99;
-    }
-
-    /*hide the items when the select box is closed:*/
-    .select-hide {
-      display: none;
-    }
-
-    .select-items div:hover, .same-as-selected {
-      background-color: rgba(0, 0, 0, 0.1);
-    }
-    </style>
-
-    <head>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-
-    <body>
-      <h2>Spending</h2>
-
-      <!-- Ask for  amount -->
-      <form action="/buy" method="POST">
-        <input name="amount" placeholder="Amount Spent" type="number">
-
-        <!-- Ask for  description -->
-        <input name="description" placeholder="Description" type="text">
-
-        <!-- Creating a button named quote -->
-        <button class="btn btn-primary" type="submit">Submit</button>
-
-        <!--surround the select box with a "custom-select" DIV element. Remember to set the width:-->
-          <div class="custom-select" style="width:200px;">
-            <select name="category" id="category">
-              <option value="0">Select Category:</option>
-              <option value="1">Food</option>
-              <option value="2">Housing</option>
-              <option value="3">Insurance</option>
-              <option value="4">Utilities (cell phone, gas, electricity, water, internet)</option>
-              <option value="5">Recreation (travel, entertainment, hobbies)</option>
-              <option value="6">Personal (closing, haircuts)</option>
-              <option value="7">Transportation (public transportation, car, gas).</option>
-              <option value="8">Savings</option>
-            </select>
-        </div>
-      </form>
-
-
-      <script>
+    <script>
       var x, i, j, l, ll, selElmnt, a, b, c;
       /*look for any elements with the class "custom-select":*/
       x = document.getElementsByClassName("custom-select");
@@ -184,7 +85,58 @@
       then close all select boxes:*/
       document.addEventListener("click", closeAllSelect);
       </script>
-  </body>
-</html>
+
+      <body>
+        <h2>Spending</h2>
+        <!-- Ask for  amount -->
+        <form action="/buy" method="POST">
+            <input name="amount" placeholder="Amount Spent" type="number">
+
+            <!-- Ask for  description -->
+            <input name="description" placeholder="Description" type="text">
+
+            <!-- Creating a button named quote -->
+            <button class="btn btn-primary" type="submit">Submit</button>
+
+            <!--surround the select box with a "custom-select" DIV element. Remember to set the width:-->
+            <div class="custom-select" style="width:200px;">
+                <select name="category" id="category">
+                    <option value="0">Select Category:</option>
+                    <option value="1">Food</option>
+                    <option value="2">Housing</option>
+                    <option value="3">Insurance</option>
+                    <option value="4">Utilities (cell phone, gas, electricity, water, internet)</option>
+                    <option value="5">Recreation (travel, entertainment, hobbies)</option>
+                    <option value="6">Personal (closing, haircuts)</option>
+                    <option value="7">Transportation (public transportation, car, gas).</option>
+                    <option value="8">Savings</option>
+                </select>
+            </div>
+
+        </form>
+    </body>
+
+    <!-- Break points to make it look better -->
+    <br><br><br>
+
+    <table class="table">
+        <tr>
+            <th style="text-align: center">Symbol</th>
+            <th style="text-align: center">Name</th>
+            <th style="text-align: center">Shares</th>
+            <th style="text-align: center">Price</th>
+            <th style="text-align: center">TOTAL</th>
+        </tr>
+        <tbody>
+            {% for stock in symbols %}
+                <tr>
+                    <td>{{ stock["date"] }}</td>
+                    <td>{{ stock["category"] }}</td>
+                    <td>{{ stock["description"] }}</td>
+                    <td>{{ stock["cost"] | usd }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
 {% endblock %}
