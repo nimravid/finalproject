@@ -23,7 +23,6 @@ nav .navbar-brand .green
 }
 
 .middle {
-    position:absolute;
-    top: 20px;
-    right:20px;
+    position: fixed;
+    left: 50%;
 }
