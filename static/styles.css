@@ -22,6 +22,7 @@ nav .navbar-brand .green
     color: #2e944b;
 }
 
-.size {
-    
+.middle {
+    position: relative;
+    left: 20px;
 }
